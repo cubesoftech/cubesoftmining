@@ -7,12 +7,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const requestPrice = await fetch(
-    "https://api.binance.com/api/v3/avgPrice?symbol=ETHUSDT"
-  );
-  const { price } = await requestPrice.json();
-  const priceUSD = parseFloat(price);
-  console.log("priceUSD", priceUSD);
   const balance = await prisma.siteBalance.findFirst();
   if (balance) {
     const { lastUpdate } = balance;
@@ -29,7 +23,7 @@ export default async function handler(
       data: {
         balance: newBalance,
         lastUpdate: now,
-        amountUSD: priceUSD * newBalance,
+        amountUSD: newBalance,
         totalUser: 23432 + random,
       },
     });
@@ -39,7 +33,7 @@ export default async function handler(
       data: {
         balance: 2352,
         lastUpdate: new Date(),
-        amountUSD: priceUSD * 2352,
+        amountUSD: 2352,
         totalUser: 23432,
       },
     });
