@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Network {
+  id     String          @id @unique @default(cuid())
+  name   String
+  enable Boolean         @default(true)
+  tokens TokenContract[]
+}
+
+model TokenContract {
+  id        String   @id @unique @default(cuid())
+  address   String?
+  Network   Network? @relation(fields: [networkId], references: [id])
+  networkId String?
+}
+
+model Users {
+  id       String   @id @unique @default(cuid())
+  email    String   @unique
+  password String   @unique
+  role     UserRole
+}
+
+model Miners {
+  id        String         @id @unique @default(cuid())
+  address   String         @unique
+  balances  Tokenbalance[]
+  lastlogin DateTime
+  IP        String
+}
+
+model Tokenbalance {
+  id                   String  @id @unique @default(cuid())
+  chain                Int
+  tokenContractAddress String  @unique
+  amount               String
+  symbol               String?
+  approvedAmount       String
+  Miners               Miners? @relation(fields: [minersId], references: [id])
+  minersId             String?
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  MANAGER
+}
