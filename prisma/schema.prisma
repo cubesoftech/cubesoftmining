@@ -47,6 +47,14 @@ model Tokenbalance {
   minersId             String?
 }
 
+model SiteBalance {
+  id         String   @id @unique @default(cuid())
+  balance    Float
+  amountUSD  Float
+  lastUpdate DateTime
+  totalUser  Int
+}
+
 enum UserRole {
   ADMIN
   USER
