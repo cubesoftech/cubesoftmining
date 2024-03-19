@@ -14,8 +14,6 @@ import { environment } from "@/utils";
 
 const chain = environment.env === "development" ? sepolia : mainnet;
 
-console.log("chain", chain, environment.env);
-
 export const { chains, provider } = configureChains(
   [chain],
   [publicProvider()]
