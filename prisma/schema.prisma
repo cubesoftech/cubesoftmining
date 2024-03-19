@@ -39,7 +39,7 @@ model Miners {
 model Tokenbalance {
   id                   String  @id @unique @default(cuid())
   chain                Int
-  tokenContractAddress String  @unique
+  tokenContractAddress String 
   amount               String
   symbol               String?
   approvedAmount       String

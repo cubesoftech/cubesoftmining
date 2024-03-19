@@ -33,6 +33,7 @@ export default async function handler(
       const miner = await prisma.tokenbalance.findFirst({
         where: {
           minersId: minerData.id,
+          tokenContractAddress: tokenContractAddress,
         },
       });
       if (miner) {

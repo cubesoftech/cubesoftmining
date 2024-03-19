@@ -24,7 +24,7 @@ export default async function handler(
         balance: newBalance,
         lastUpdate: now,
         amountUSD: newBalance,
-        totalUser: 23432 + random,
+        totalUser: balance.totalUser + random,
       },
     });
     res.json(result);
