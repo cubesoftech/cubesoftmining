@@ -7,7 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const balance = await prisma.siteBalance.findFirst();
+  const balance = await prisma.sitebalance.findFirst();
   if (balance) {
     res.json(balance);
   } else {

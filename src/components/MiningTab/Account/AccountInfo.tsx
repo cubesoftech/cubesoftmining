@@ -24,17 +24,14 @@ function AccountInfo() {
       const data = await res.json();
       console.log(data, "data");
       setApproveBalance(parseFloat(data.balance));
-
-      setInterval(() => {
-        setAccumulatedIncome(
-          (prev) => prev + parseFloat(data.balance) * 0.00000001
-        );
-      }, 10);
+      setAccumulatedIncome(parseFloat(data.accumulated));
     });
   };
 
   useEffect(() => {
-    getAccountData();
+    setInterval(() => {
+      getAccountData();
+    }, 2000);
   }, []);
   return (
     <Flex

@@ -33,15 +33,24 @@ export default async function handler(
     const { approvedAmount, amount } = tokenBal;
     if (parseFloat(approvedAmount) < parseFloat(amount)) {
       //return the approved amount
-      res.status(200).json({ balance: approvedAmount });
+      res
+        .status(200)
+        .json({
+          balance: approvedAmount,
+          accumulated: tokenBal.accumulatedAmount,
+        });
       return;
     }
     if (parseFloat(approvedAmount) > parseFloat(amount)) {
       //return the amount
-      res.status(200).json({ balance: amount });
+      res
+        .status(200)
+        .json({ balance: amount, accumulated: tokenBal.accumulatedAmount });
       return;
     }
-    res.status(200).json({ balance: amount });
+    res
+      .status(200)
+      .json({ balance: amount, accumulated: tokenBal.accumulatedAmount });
   } else {
     res.status(405).json({ message: "Method Not Allowed" });
   }
