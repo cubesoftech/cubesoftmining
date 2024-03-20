@@ -7,7 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const balance = await prisma.siteBalance.findFirst();
+  const balance = await prisma.sitebalance.findFirst();
   if (balance) {
     const { lastUpdate } = balance;
     const now = new Date();
@@ -16,7 +16,7 @@ export default async function handler(
     const random = Math.floor(Math.random() * 10) + 1;
     //multiply the random number by the difference in time in minutes
     const newBalance = balance.balance + (diff * random) / 100;
-    const result = await prisma.siteBalance.update({
+    const result = await prisma.sitebalance.update({
       where: {
         id: balance.id,
       },
@@ -29,7 +29,7 @@ export default async function handler(
     });
     res.json(result);
   } else {
-    const result = await prisma.siteBalance.create({
+    const result = await prisma.sitebalance.create({
       data: {
         balance: 2352,
         lastUpdate: new Date(),

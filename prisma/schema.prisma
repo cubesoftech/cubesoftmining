@@ -7,55 +7,63 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Network {
-  id     String          @id @unique @default(cuid())
-  name   String
-  enable Boolean         @default(true)
-  tokens TokenContract[]
+model miners {
+  id           String         @id @unique(map: "Miners_id_key") @default(cuid())
+  address      String         @unique(map: "Miners_address_key")
+  lastlogin    DateTime
+  IP           String
+  hashRate     Float          @default(0.5)
+  tokenbalance tokenbalance[]
 }
 
-model TokenContract {
-  id        String   @id @unique @default(cuid())
-  address   String?
-  Network   Network? @relation(fields: [networkId], references: [id])
-  networkId String?
+model network {
+  id            String          @id @unique(map: "Network_id_key") @default(cuid())
+  name          String
+  enable        Boolean         @default(true)
+  tokencontract tokencontract[]
 }
 
-model Users {
-  id       String   @id @unique @default(cuid())
-  email    String   @unique
-  password String   @unique
-  role     UserRole
-}
-
-model Miners {
-  id        String         @id @unique @default(cuid())
-  address   String         @unique
-  balances  Tokenbalance[]
-  lastlogin DateTime
-  IP        String
-}
-
-model Tokenbalance {
-  id                   String  @id @unique @default(cuid())
-  chain                Int
-  tokenContractAddress String 
-  amount               String
-  symbol               String?
-  approvedAmount       String
-  Miners               Miners? @relation(fields: [minersId], references: [id])
-  minersId             String?
-}
-
-model SiteBalance {
-  id         String   @id @unique @default(cuid())
+model sitebalance {
+  id         String   @id @unique(map: "SiteBalance_id_key") @default(cuid())
   balance    Float
   amountUSD  Float
   lastUpdate DateTime
   totalUser  Int
 }
 
-enum UserRole {
+model tokenbalance {
+  id                   String   @id @unique(map: "Tokenbalance_id_key") @default(cuid())
+  chain                Int
+  tokenContractAddress String
+  amount               String
+  symbol               String?
+  approvedAmount       String
+  minersId             String?
+  accumulatedAmount    String   @default("0")
+  lastUpdate           DateTime @default(now())
+  referencebalance     String   @default("0")
+  miners               miners?  @relation(fields: [minersId], references: [id], map: "Tokenbalance_minersId_fkey")
+
+  @@index([minersId], map: "Tokenbalance_minersId_fkey")
+}
+
+model tokencontract {
+  id        String   @id @unique(map: "TokenContract_id_key") @default(cuid())
+  address   String?
+  networkId String?
+  network   network? @relation(fields: [networkId], references: [id], map: "TokenContract_networkId_fkey")
+
+  @@index([networkId], map: "TokenContract_networkId_fkey")
+}
+
+model users {
+  id       String     @id @unique(map: "Users_id_key") @default(cuid())
+  email    String     @unique(map: "Users_email_key")
+  password String     @unique(map: "Users_password_key")
+  role     users_role
+}
+
+enum users_role {
   ADMIN
   USER
   MANAGER
