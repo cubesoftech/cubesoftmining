@@ -12,7 +12,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import Head from "next/head";
 import { environment } from "@/utils";
 
-const chain = environment.env === "development" ? sepolia : mainnet;
+const chain = environment.env !== "development" ? sepolia : mainnet;
 
 export const { chains, provider } = configureChains(
   [chain],
