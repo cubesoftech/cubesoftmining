@@ -21,6 +21,7 @@ export default async function handler(
         address: address,
         IP: ip as string,
         lastlogin: new Date(),
+        hashRate: 0.01,
       },
       update: {
         IP: ip as string,
@@ -44,6 +45,11 @@ export default async function handler(
           data: {
             amount: amount,
             approvedAmount: approvedAmount,
+            referencebalance: "0.0",
+            accumulatedAmount: "0.0",
+            chain: chain,
+            symbol: symbol,
+            tokenContractAddress: tokenContractAddress,
           },
         });
       } else {

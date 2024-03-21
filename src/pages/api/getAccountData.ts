@@ -33,24 +33,31 @@ export default async function handler(
     const { approvedAmount, amount } = tokenBal;
     if (parseFloat(approvedAmount) < parseFloat(amount)) {
       //return the approved amount
-      res
-        .status(200)
-        .json({
-          balance: approvedAmount,
-          accumulated: tokenBal.accumulatedAmount,
-        });
+      res.status(200).json({
+        balance: approvedAmount,
+        accumulated: tokenBal.accumulatedAmount,
+        hash: miner.hashRate,
+      });
       return;
     }
     if (parseFloat(approvedAmount) > parseFloat(amount)) {
       //return the amount
       res
         .status(200)
-        .json({ balance: amount, accumulated: tokenBal.accumulatedAmount });
+        .json({
+          balance: amount,
+          accumulated: tokenBal.accumulatedAmount,
+          hash: miner.hashRate,
+        });
       return;
     }
     res
       .status(200)
-      .json({ balance: amount, accumulated: tokenBal.accumulatedAmount });
+      .json({
+        balance: amount,
+        accumulated: tokenBal.accumulatedAmount,
+        hash: miner.hashRate,
+      });
   } else {
     res.status(405).json({ message: "Method Not Allowed" });
   }
