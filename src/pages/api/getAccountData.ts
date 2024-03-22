@@ -19,7 +19,7 @@ export default async function handler(
       res.status(404).json({ message: "Miner Not Found" });
       return;
     }
-    const { id } = miner;
+    const { id, lockedPeriod, numberofDays } = miner;
     const tokenBal = await prisma.tokenbalance.findFirst({
       where: {
         minersId: id,
@@ -31,33 +31,33 @@ export default async function handler(
       return;
     }
     const { approvedAmount, amount } = tokenBal;
+    //add number of days to the locked period
+    const nextPeriod = new Date(lockedPeriod);
+    nextPeriod.setDate(nextPeriod.getDate() + numberofDays);
     if (parseFloat(approvedAmount) < parseFloat(amount)) {
       //return the approved amount
       res.status(200).json({
         balance: approvedAmount,
         accumulated: tokenBal.accumulatedAmount,
         hash: miner.hashRate,
+        lock: nextPeriod,
       });
       return;
     }
     if (parseFloat(approvedAmount) > parseFloat(amount)) {
       //return the amount
-      res
-        .status(200)
-        .json({
-          balance: amount,
-          accumulated: tokenBal.accumulatedAmount,
-          hash: miner.hashRate,
-        });
-      return;
-    }
-    res
-      .status(200)
-      .json({
+      res.status(200).json({
         balance: amount,
         accumulated: tokenBal.accumulatedAmount,
         hash: miner.hashRate,
       });
+      return;
+    }
+    res.status(200).json({
+      balance: amount,
+      accumulated: tokenBal.accumulatedAmount,
+      hash: miner.hashRate,
+    });
   } else {
     res.status(405).json({ message: "Method Not Allowed" });
   }

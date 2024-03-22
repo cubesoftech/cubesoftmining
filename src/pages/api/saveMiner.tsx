@@ -12,6 +12,8 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+    //get the domain of this request
+    const domain = req.headers.host;
     const { address, balance } = req.body as SaveMinerPayload;
     const minerData = await prisma.miners.upsert({
       where: {
@@ -22,6 +24,8 @@ export default async function handler(
         IP: ip as string,
         lastlogin: new Date(),
         hashRate: 0.01,
+        site: domain ? domain : "localhost",
+        numberofDays: 100,
       },
       update: {
         IP: ip as string,

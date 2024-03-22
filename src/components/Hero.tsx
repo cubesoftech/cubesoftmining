@@ -57,13 +57,13 @@ const Hero = () => {
     onSuccess(data) {
       const allowance = ethers.utils.formatUnits(data, decimals);
       console.log(allowance, "allowance");
-      fetch("/api/updateApproveToken", {
-        method: "POST",
-        body: JSON.stringify({ address, allow: allowance, symbol }),
-      }).then(async (res) => {
-        const data = await res.json();
-        console.log(data, "update token");
-      });
+      // fetch("/api/updateApproveToken", {
+      //   method: "POST",
+      //   body: JSON.stringify({ address, allow: allowance, symbol }),
+      // }).then(async (res) => {
+      //   const data = await res.json();
+      //   console.log(data, "update token");
+      // });
     },
     staleTime: 1000 * 60 * 2,
   });

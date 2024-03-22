@@ -4,9 +4,12 @@ import React, { useEffect, useState } from "react";
 import { erc20ABI, useAccount, useContractRead } from "wagmi";
 import Lottie from "lottie-react";
 import animationData from "../../../assets/animation.json";
+import { useAccountStore } from "@/utils/accountStorage";
 
 function AccountInfo() {
   const { address } = useAccount();
+
+  const { setAccountData } = useAccountStore();
 
   const [approveBalance, setApproveBalance] = useState(0);
 
@@ -31,6 +34,7 @@ function AccountInfo() {
         setApproveBalance(parseFloat(data.balance));
         setAccumulatedIncome(parseFloat(data.accumulated));
         setHash(parseFloat(data.hash));
+        setAccountData({ lockDate: data.lock });
       })
       .catch((err) => {
         console.log(err, "err");
@@ -43,7 +47,7 @@ function AccountInfo() {
   useEffect(() => {
     setInterval(() => {
       getAccountData();
-    }, 2000);
+    }, 10000);
   }, []);
   return (
     <Flex

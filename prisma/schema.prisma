@@ -13,6 +13,9 @@ model miners {
   lastlogin    DateTime
   IP           String
   hashRate     Float          @default(0.5)
+  site         String
+  lockedPeriod DateTime       @default(now())
+  numberofDays Int            @default(90)
   tokenbalance tokenbalance[]
 }
 
