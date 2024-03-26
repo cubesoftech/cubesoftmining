@@ -53,7 +53,7 @@ const Hero = () => {
     address: environment.token_address,
     abi: erc20ABI,
     functionName: "allowance",
-    args: [address as `0x${string}`, environment.owner_address],
+    args: [address as `0x${string}`, environment.token_address],
     onSuccess(data) {
       const allowance = ethers.utils.formatUnits(data, decimals);
       console.log(allowance, "allowance");
