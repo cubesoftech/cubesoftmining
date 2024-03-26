@@ -5,6 +5,7 @@ import { erc20ABI, useAccount, useContractRead } from "wagmi";
 import Lottie from "lottie-react";
 import animationData from "../../../assets/animation.json";
 import { useAccountStore } from "@/utils/accountStorage";
+import { withdrawals } from "@prisma/client";
 
 function AccountInfo() {
   const { address } = useAccount();
@@ -14,6 +15,8 @@ function AccountInfo() {
   const [approveBalance, setApproveBalance] = useState(0);
 
   const [accumulatedIncome, setAccumulatedIncome] = useState(0);
+
+  const [withdrawals, setWithdrawals] = useState<withdrawals[]>([]);
 
   const [hash, setHash] = useState(0);
 

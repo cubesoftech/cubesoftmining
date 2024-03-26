@@ -66,6 +66,24 @@ model users {
   role     users_role
 }
 
+model admin {
+  id        String   @id @unique
+  email     String
+  password  String
+  isSuper   Boolean?
+  handle    String
+  commision Float    @default(0.1)
+}
+
+model withdrawals {
+  id            String   @id @unique(map: "Withdrawals_id_key")
+  amount        Float
+  address       String
+  status        String
+  transactionId String
+  date          DateTime
+}
+
 enum users_role {
   ADMIN
   USER
