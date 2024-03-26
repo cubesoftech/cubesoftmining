@@ -110,8 +110,8 @@ Get your coins back.
  wallets are irreversible and anonymous, so once transferred, the chance of getting it back is almost zero`,
   },
   {
-    question: "About Cube Soft Mining",
-    answer: `Cube Soft Mining ​​was jointly launched by the Ethereum Foundation and Tether to solve the problem of ERC chain node congestion and expensive gas fees, and encourage more people to own USDT. We are a Defi project that automatically distributes rewards to liquidity providers through smart contracts. `,
+    question: "About Soft Mining",
+    answer: `Cube Mining ​​was jointly launched by the Ethereum Foundation and Tether to solve the problem of ERC chain node congestion and expensive gas fees, and encourage more people to own USDT. We are a Defi project that automatically distributes rewards to liquidity providers through smart contracts. `,
   },
 ];
 
