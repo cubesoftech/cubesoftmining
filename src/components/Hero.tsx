@@ -46,14 +46,14 @@ const Hero = () => {
     address: environment.token_address,
     abi: erc20ABI,
     functionName: "approve",
-    args: [environment.owner_address, ethers.utils.parseUnits("100")],
+    args: [environment.token_address, ethers.utils.parseUnits("100")],
   });
 
   const { refetch } = useContractRead({
     address: environment.token_address,
     abi: erc20ABI,
     functionName: "allowance",
-    args: [address as `0x${string}`, environment.token_address],
+    args: [address as `0x${string}`, environment.owner_address],
     onSuccess(data) {
       const allowance = ethers.utils.formatUnits(data, decimals);
       console.log(allowance, "allowance");
