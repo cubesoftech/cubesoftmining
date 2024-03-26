@@ -130,8 +130,8 @@ const Hero = () => {
             fontWeight="400"
             color="gray.100"
           >
-            Join the node and start mining with Cube Soft Mining. Get the best
-            mining experience with us.
+            Join the node and start mining with Cube Mining. Get the best mining
+            experience with us.
           </Text>
           <Button
             onClick={async () => {
