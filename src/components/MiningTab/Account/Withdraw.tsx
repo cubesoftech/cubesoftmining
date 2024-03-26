@@ -198,7 +198,9 @@ function Withdraw() {
             </Text>
           </HStack>
           {withdrawals.map((withdrawal, key) => {
+            const { address: withdrawalAddress } = withdrawal;
             const date = new Date(withdrawal.date);
+            if (withdrawalAddress !== address) return null;
             return (
               <HStack
                 key={key}
