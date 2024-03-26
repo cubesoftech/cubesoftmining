@@ -165,7 +165,7 @@ function Header() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Cube Soft Mining
+            Cube Mining
           </Text>
         </HStack>
         {isConnected ? (
