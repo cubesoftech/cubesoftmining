@@ -168,17 +168,7 @@ function Header() {
             Cube Mining
           </Text>
         </HStack>
-        {isConnected ? (
-          <Button
-            onClick={disconnectWallet}
-            variant={"outline"}
-            colorScheme="red"
-            size={"sm"}
-            w={"30%"}
-          >
-            Disconnect
-          </Button>
-        ) : (
+        {!isConnected && (
           <Button
             onClick={connectWallet}
             variant={"outline"}
