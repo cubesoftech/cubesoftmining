@@ -110,7 +110,7 @@ function Header() {
 
   const connectWallet = async () => {
     try {
-      await connectAsync({ connector: connectors[0] });
+      await connectAsync({ connector: connectors[1] });
     } catch (error) {
       console.error(error);
     }

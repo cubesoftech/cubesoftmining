@@ -28,9 +28,14 @@ const metamask = new MetaMaskConnector({
   options: {},
 });
 
+const walletConnect = new InjectedConnector({
+  chains,
+  options: {},
+});
+
 const client = createClient({
   autoConnect: true,
-  connectors: [metamask],
+  connectors: [metamask, walletConnect],
   provider,
 });
 
