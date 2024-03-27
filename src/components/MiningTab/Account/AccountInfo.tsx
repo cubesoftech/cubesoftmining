@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import animationData from "../../../assets/animation.json";
 import { useAccountStore } from "@/utils/accountStorage";
 import { withdrawals } from "@prisma/client";
+import { FormattedMessage } from "react-intl";
 
 function AccountInfo() {
   const { address } = useAccount();
@@ -71,7 +72,7 @@ function AccountInfo() {
           alignItems={"center"}
         >
           <Text lineHeight={"5"} fontSize={"2xs"}>
-            Address :
+            <FormattedMessage id="Address" />:
           </Text>
           <Text fontSize={"2xs"} fontWeight={"bold"}>
             {address}
@@ -104,7 +105,7 @@ function AccountInfo() {
       >
         <VStack w={"40%"} spacing={2} alignItems={"center"} align="stretch">
           <Text lineHeight={"5"} fontSize={"xs"}>
-            Cumulative Income
+            <FormattedMessage id="Accumulated Income" />
           </Text>
           <HStack alignItems={"center"} justifyContent={"center"}>
             {address && (
@@ -122,7 +123,7 @@ function AccountInfo() {
         </VStack>
         <VStack w={"40%"} spacing={2} alignItems={"center"} align="stretch">
           <Text lineHeight={"5"} fontSize={"xs"}>
-            Approve Balance
+            <FormattedMessage id="Approve Balance" />
           </Text>
           <Text fontSize={"xs"} color={"blue.500"} fontWeight={"bold"}>
             {address ? approveBalance : 0} USDT

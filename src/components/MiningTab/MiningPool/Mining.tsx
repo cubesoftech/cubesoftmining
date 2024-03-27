@@ -2,6 +2,7 @@ import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import { ethers } from "ethers";
 import React, { use, useEffect, useRef, useState } from "react";
 import { walletsEth } from "@/utils";
+import { FormattedMessage } from "react-intl";
 
 function Mining() {
   const [wallets, setWallets] = useState<
@@ -51,19 +52,19 @@ function Mining() {
   return (
     <VStack spacing={0} align="stretch">
       <Text textAlign={"center"} fontWeight={"bold"} fontSize={"xl"}>
-        User Transactions
+        <FormattedMessage id="User Transactions" />
       </Text>
       <VStack fontSize={"sm"} spacing={1} align="stretch">
         <HStack m={2} w={"100%"} justifyContent={"space-between"}>
           <HStack w={"30%"} justifyContent={"center"}>
             <Text w={"100%"} color={"gray.700"} fontWeight={"bold"}>
-              Address
+              <FormattedMessage id="Address" />
             </Text>
           </HStack>
 
           <HStack w={"30%"} justifyContent={"center"}>
             <Text color={"gray.700"} fontWeight={"bold"}>
-              Amount
+              <FormattedMessage id="Amount" />
             </Text>
           </HStack>
         </HStack>

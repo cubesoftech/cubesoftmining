@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { ethers } from "ethers";
 import React, { use, useEffect, useRef, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 const TableData = () => {
   const data = [
@@ -76,42 +77,25 @@ const TableData = () => {
 
 const helpCenterFAQ = [
   {
-    question: "How do I need to join?",
-    answer:
-      "Participating in non-destructive and non-guaranteed liquidity mining requires an gas fee to receive replacement coupons, and the wallet address only needs to be claimed once. After success, the mining permission is automatically turned on. ",
+    question: <FormattedMessage id="1" />,
+    answer: <FormattedMessage id="How do I need to join?" />,
   },
   {
-    question: "How to withdraw cash? ",
-    answer:
-      "You can initiate a withdrawal of USDT that is produced daily. USDT withdrawals are automatically sent to the wallet address you add to the node, other addresses are not supported.",
+    question: <FormattedMessage id="2" />,
+    answer: <FormattedMessage id={"How to withdraw cash?"} />,
   },
   {
-    question: "How to calculate the income?",
-    answer:
-      "When you join successfully, the smart contract starts to calculate your address through the node, and starts to calculate the income. Once the smart contract is successfully bound, the income is calculated by the daily interest, and the daily income is calculated by the node. The benefits vary depending on the size of the economy. Generate mining computing power based on wallet USDT balance.",
+    question: <FormattedMessage id="3" />,
+    answer: <FormattedMessage id={"How to calculate the income?"} />,
     additional: <TableData />,
   },
   {
-    question: "Risk Warning",
-    answer: `When you create a Wallet account, you will be prompted to back up 12 words, which are your account mnemonics, which are equivalent to your "private key". 
-Whoever has these 12 words has coins in his account. 
-These 12 words are yours to keep, you can't get them back if you lose them. 
-What do I need to know about Custody Code? 
-It's best to just copy the mnemonics onto paper or other cold medium (such as the Ice Armor board) to copy them correctly and clearly. 
-Keep it in a very safe place in your home. 
-Do not store passwords through cell phone photos, computer software, email, websites, collections, or other media. 
-Do not wipe Wallet data, factory reset, uninstall Wallet or format your phone to install Wallet, be careful if you have coins in your Wallet account! 
-Don't reveal your booster to anyone and don't expose your booster on any online media! 
-Do not deposit coins into exposed accounts! 
-Anyone asking for your mnemonic phrase is a liar! 
-serious! 
-If you lose your tokens, if you back up the wrong password, if you uninstall your wallet by mistake, or if you lose your phone with wallet installed, you will not be able to delete your wallet from your wallet 
-Get your coins back. 
- wallets are irreversible and anonymous, so once transferred, the chance of getting it back is almost zero`,
+    question: <FormattedMessage id="4" />,
+    answer: <FormattedMessage id={"Risk Warning"} />,
   },
   {
-    question: "About Soft Mining",
-    answer: `Cube Mining ​​was jointly launched by the Ethereum Foundation and Tether to solve the problem of ERC chain node congestion and expensive gas fees, and encourage more people to own USDT. We are a Defi project that automatically distributes rewards to liquidity providers through smart contracts. `,
+    question: <FormattedMessage id="5" />,
+    answer: <FormattedMessage id={"About Soft Mining"} />,
   },
 ];
 
@@ -119,7 +103,7 @@ function HelpCenter() {
   return (
     <VStack spacing={2} align="stretch">
       <Text textAlign={"center"} fontWeight={"bold"} fontSize={"xl"}>
-        Help Center
+        <FormattedMessage id="Help Center" />
       </Text>
       <FAQ />
     </VStack>

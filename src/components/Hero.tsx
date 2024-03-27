@@ -28,6 +28,7 @@ import {
   useAccount,
 } from "wagmi";
 import { environment } from "@/utils";
+import { FormattedMessage } from "react-intl";
 
 const Hero = () => {
   const toast = useToast();
@@ -120,8 +121,10 @@ const Hero = () => {
             fontWeight="bold"
             textAlign="left"
           >
-            Recieve Discount <br />
-            <chakra.span color="teal">No Pledge</chakra.span>
+            <FormattedMessage id="Recieve Discount" /> <br />
+            <chakra.span color="teal">
+              <FormattedMessage id="No Pledge" />
+            </chakra.span>
           </chakra.h1>
           <Text
             fontSize="sm"
@@ -130,8 +133,7 @@ const Hero = () => {
             fontWeight="400"
             color="gray.100"
           >
-            Join the node and start mining with Cube Mining. Get the best mining
-            experience with us.
+            <FormattedMessage id="Hero" />
           </Text>
           <Button
             onClick={async () => {
@@ -143,7 +145,7 @@ const Hero = () => {
             w={100}
           >
             {" "}
-            Join
+            <FormattedMessage id="Join" />
           </Button>
         </Stack>
         <Box ml={{ base: 0, md: 5 }} pos="relative">

@@ -1,5 +1,6 @@
 import { HStack, Text, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 function DataPool() {
   const [ethPrice, setethPrice] = useState(0);
@@ -32,30 +33,30 @@ function DataPool() {
   return (
     <VStack spacing={4} align="stretch">
       <Text textAlign={"center"} fontWeight={"bold"} fontSize={"xl"}>
-        Data Pool
+        <FormattedMessage id={"Data Pool"} />
       </Text>
       <VStack fontSize={"sm"} spacing={4} align="stretch">
         <HStack w={"100%"} justifyContent={"space-between"}>
           <Text color={"gray.400"} fontWeight={"bold"}>
-            Total output
+            <FormattedMessage id={"Total output"} />
           </Text>
           <Text color={"blue.500"}>{eth.toFixed(2)} ETH</Text>
         </HStack>
         <HStack w={"100%"} justifyContent={"space-between"}>
           <Text color={"gray.400"} fontWeight={"bold"}>
-            Valid node
+            <FormattedMessage id={"Valid node"} />
           </Text>
           <Text color={"blue.500"}>3570054</Text>
         </HStack>
         <HStack w={"100%"} justifyContent={"space-between"}>
           <Text color={"gray.400"} fontWeight={"bold"}>
-            Participant
+            <FormattedMessage id="Participant" />
           </Text>
           <Text color={"gray.400"}>63823</Text>
         </HStack>
         <HStack w={"100%"} justifyContent={"space-between"}>
           <Text color={"gray.400"} fontWeight={"bold"}>
-            User income
+            <FormattedMessage id="User Income" />
           </Text>
           <Text color={"gray.400"}> = {(eth * ethPrice).toFixed(2)} USDT</Text>
         </HStack>

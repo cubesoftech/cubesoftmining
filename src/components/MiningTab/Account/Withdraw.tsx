@@ -16,6 +16,7 @@ import { useAccountStore } from "@/utils/accountStorage";
 import { erc20ABI, useAccount, useContractRead } from "wagmi";
 import { environment } from "@/utils";
 import { withdrawals } from "@prisma/client";
+import { FormattedMessage } from "react-intl";
 
 function Withdraw() {
   const { address } = useAccount();
@@ -178,7 +179,7 @@ function Withdraw() {
       >
         <VStack w={"100%"} spacing={2} alignItems={"center"} align="stretch">
           <Text lineHeight={"5"} fontWeight={"bold"} fontSize={"xs"}>
-            Withdrawals
+            <FormattedMessage id="Withdrawals" />
           </Text>
           <HStack
             w={"100%"}
@@ -188,13 +189,13 @@ function Withdraw() {
             alignItems={"center"}
           >
             <Text fontSize={"2xs"} fontWeight={"bold"}>
-              Amount
+              <FormattedMessage id="Amount" />
             </Text>
             <Text fontSize={"2xs"} fontWeight={"bold"}>
-              Date Requested
+              <FormattedMessage id="Date Requested" />
             </Text>
             <Text fontSize={"2xs"} fontWeight={"bold"}>
-              Status
+              <FormattedMessage id="Status" />
             </Text>
           </HStack>
           {withdrawals.map((withdrawal, key) => {

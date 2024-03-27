@@ -12,6 +12,7 @@ import {
 import React from "react";
 import { useAccount } from "wagmi";
 import { FaCopy } from "react-icons/fa";
+import { FormattedMessage } from "react-intl";
 
 function ShareLink() {
   const { address } = useAccount();
@@ -32,7 +33,7 @@ function ShareLink() {
           fontWeight={"bold"}
           fontSize={"xs"}
         >
-          My Share Link
+          <FormattedMessage id="My Share Link" />
         </Text>
 
         <HStack w={"100%"} justifyContent={"center"}>
@@ -50,14 +51,12 @@ function ShareLink() {
             variant={"outline"}
             colorScheme="linkedin"
           >
-            Copy
+            <FormattedMessage id="Copy" />
           </Button>
         </HStack>
 
         <Text fontSize={"2xs"} color={"gray"}>
-          Share your invitation link. When friends join the node through your
-          link, they can get generous token rewards. For details of the event,
-          please consult online customer service
+          <FormattedMessage id="Share Description" />
         </Text>
       </VStack>
     </Flex>

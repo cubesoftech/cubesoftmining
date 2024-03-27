@@ -26,6 +26,8 @@ import { ethers } from "ethers";
 import { chains } from "@/pages/_app";
 import { environment } from "@/utils";
 import { SaveMinerPayload } from "@/interfaces";
+import { useLanguage } from "@/utils/langauges";
+import { FormattedMessage } from "react-intl";
 
 function Header() {
   const toast = useToast({
@@ -131,6 +133,8 @@ function Header() {
     }
   };
 
+  const { changeLanguage } = useLanguage();
+
   return (
     <VStack
       spacing={1}
@@ -146,7 +150,11 @@ function Header() {
         padding={2}
         justifyContent={"space-between"}
       >
-        <Select w={"25%"} size={"sm"}>
+        <Select
+          onChange={(e) => changeLanguage(e.target.value as any)}
+          w={"25%"}
+          size={"sm"}
+        >
           {languages.map((language) => (
             <option key={language.value} value={language.value}>
               {language.label}
@@ -177,7 +185,7 @@ function Header() {
             w={"30%"}
             isLoading={isLoading}
           >
-            Connect Wallet
+            <FormattedMessage id="Connect Wallet" />
           </Button>
         )}
       </HStack>

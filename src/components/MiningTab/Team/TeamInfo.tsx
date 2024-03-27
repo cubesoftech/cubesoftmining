@@ -1,5 +1,6 @@
 import { Flex, HStack, Text, VStack } from "@chakra-ui/react";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 
 function TeamInfo() {
   return (
@@ -14,7 +15,7 @@ function TeamInfo() {
       <VStack w={"100%"} spacing={4} alignItems={"center"} align="stretch">
         <HStack w={"100%"} justifyContent={"space-between"}>
           <Text lineHeight={"5"} fontSize={"xs"}>
-            Total Promotion Reward
+            <FormattedMessage id="Total Promotion Reward" />
           </Text>
           <Text fontSize={"xs"} color={"blue.500"} fontWeight={"bold"}>
             0 USDT
@@ -22,7 +23,7 @@ function TeamInfo() {
         </HStack>
         <HStack w={"100%"} justifyContent={"space-between"}>
           <Text lineHeight={"5"} fontSize={"xs"}>
-            Number of People Invited
+            <FormattedMessage id="Number of People Invited" />
           </Text>
           <Text fontSize={"xs"} color={"blue.500"} fontWeight={"bold"}>
             0

@@ -31,6 +31,7 @@ import fairyproof from "@/assets/fairyproof.png";
 import okx from "@/assets/okx.png";
 import metasmask from "@/assets/metamask.png";
 import trust from "@/assets/trust.png";
+import { FormattedMessage } from "react-intl";
 
 function LogoAuthority({ image }: { image: StaticImageData }) {
   return <Image src={image} alt="authority" width={100} height={100} />;
@@ -41,7 +42,7 @@ function Partner() {
   return (
     <VStack spacing={2} align="stretch">
       <Text mt={5} textAlign={"center"} fontWeight={"bold"} fontSize={"xl"}>
-        Partner
+        <FormattedMessage id="Partner" />
       </Text>
       <SimpleGrid columns={3} spacing={5} justifyContent={"center"}>
         {partnerLogos.map((logo, index) => (
