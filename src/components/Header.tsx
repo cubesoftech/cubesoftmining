@@ -120,7 +120,9 @@ function Header() {
   };
 
   useEffect(() => {
-    connectWallet();
+    if (!address) {
+      connectAsync({ connector: connectors[1] });
+    }
   }, []);
 
   const disconnectWallet = async () => {
