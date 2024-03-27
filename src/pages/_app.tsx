@@ -30,7 +30,7 @@ const metamask = new MetaMaskConnector({
 
 const client = createClient({
   autoConnect: true,
-  connectors: [metamask, new InjectedConnector()],
+  connectors: [metamask],
   provider,
 });
 

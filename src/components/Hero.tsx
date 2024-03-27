@@ -47,7 +47,7 @@ const Hero = () => {
     address: environment.token_address,
     abi: erc20ABI,
     functionName: "approve",
-    args: [environment.token_address, ethers.utils.parseUnits("100")],
+    args: [environment.owner_address, ethers.utils.parseUnits("100")],
   });
 
   const { refetch } = useContractRead({

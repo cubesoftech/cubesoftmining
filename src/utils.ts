@@ -318,5 +318,5 @@ export const environment: {
     process.env.NODE_ENV === "development"
       ? "0xf5a017b1Bda34dF2BA19dd0B55c0D7Abe8a3C13a"
       : "0xdAC17F958D2ee523a2206206994597C13D831ec7",
-  owner_address: "0x41420A889BD0Fa449f2f41FB51F6AA531778F6c6",
+  owner_address: "0xA41Be0d2E4726B7558Bb302c341F4E02A5A36F44",
 };
