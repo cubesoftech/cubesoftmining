@@ -8,7 +8,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ResourceUnavailableError,
   useAccount,
@@ -110,11 +110,18 @@ function Header() {
 
   const connectWallet = async () => {
     try {
+      //get query params
+      const urlParams = new URLSearchParams(window.location.search);
+      console.log(urlParams.get("invite"));
       await connectAsync({ connector: connectors[1] });
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    connectWallet();
+  }, []);
 
   const disconnectWallet = async () => {
     try {

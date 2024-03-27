@@ -43,12 +43,17 @@ function ShareLink() {
             variant={"solid"}
             colorScheme="gray"
           >
-            {`${location.href}${address?.slice(2, 30)}`}
+            {`${location.href}?invite=${address?.slice(2, 30)}`}
           </Code>
           <Button
             leftIcon={<FaCopy />}
             size={"xs"}
             variant={"outline"}
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `${location.href}?invite=${address?.slice(2, 30)}`
+              );
+            }}
             colorScheme="linkedin"
           >
             <FormattedMessage id="Copy" />
